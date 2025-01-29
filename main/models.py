@@ -45,7 +45,7 @@ class Muallif(models.Model):
         verbose_name_plural = "Mualliflar"
 
     def __str__(self):
-        return self.ism
+        return f"{self.ism} ({self.jins})"
 
 
 class Kitob(models.Model):
