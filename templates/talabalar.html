@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Talabalar ro'yxati</title>
+</head>
+<body>
+<h1>Talabalar ro'yxati</h1>
+<form>
+    <input type="text" name="search" placeholder="Qidirish uchun kiriting.."
+           {% if search %}
+           value="{{ search }}"
+           {% endif %}
+    >
+    <button>Qidirish</button>
+    <a href="/talabalar/">
+        <button type="button">Barchasi</button>
+    </a>
+</form>
+<br>
+<form>
+    <label>Kurs: </label>
+    <select name="kurs">
+        {% if kurs and kurs != '0' %}
+        <option value="{{ kurs }}">{{ kurs }}-kurs</option>
+        {% endif %}
+        <option value="0">Barchasi</option>
+        <option value="1">1-kurs</option>
+        <option value="2">2-kurs</option>
+        <option value="3">3-kurs</option>
+        <option value="4">4-kurs</option>
+    </select>
+    <label>Guruh: </label>
+    <select name="guruh">
+        {% if guruh and guruh != '0' %}
+        <option> {{ guruh }}</option>
+        {% endif %}
+        <option value="0">Barchasi</option>
+        {% for guruh in guruhlar %}
+        <option>{{ guruh }}</option>
+        {% endfor %}
+    </select>
+    <button>Filter</button>
+</form>
+<hr>
+{% for talaba in talabalar %}
+<p>{{ forloop.counter }}.
+    <a href="/talabalar/{{ talaba.id }}/">
+        {{ talaba.ism }}
+    </a>
+    <a href="/talabalar/{{ talaba.id }}/delete/">
+        <button>
+            O'chirish
+        </button>
+    </a>
+    <a href="/talabalar/{{ talaba.id }}/update/">
+        <button>
+            Tahrirlash
+        </button>
+    </a>
+</p>
+{% endfor %}
+<hr>
+<h2>Yangi Talaba</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Qo'shish</button>
+</form>
+</body>
+</html>

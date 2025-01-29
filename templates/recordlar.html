@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rekordlar</title>
+</head>
+<body>
+<h1>Rekordlar ro'yxati</h1>
+<hr>
+{% for record in recordlar %}
+    <p>
+        {{ forloop.counter }}. {{ record.talaba.ism }} ("{{ record.kitob.nom }}")
+        <a href="/recordlar/{{ record.id }}/update/">
+            <button>Tahrirlash</button>
+        </a>
+    </p>
+{% endfor %}
+</body>
+</html>

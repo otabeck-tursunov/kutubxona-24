@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Muallif | O'chirish | Tashdiqlash</title>
+</head>
+<body>
+    <p>{{ muallif.ism }} ma'lumotlarini rostdan ham o'chirmoqchimisiz?</p>
+    <button>
+        <a href="{% url 'mualliflar' %}">Bekor qilish</a>
+    </button>
+    <button>
+        <a href="/mualliflar/{{ muallif.id }}/delete/">Tasdiqlash</a>
+    </button>
+</body>
+</html>
